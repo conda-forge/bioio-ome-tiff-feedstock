@@ -3,7 +3,6 @@ schema_version: 1
 context:
   name: bioio-ome-tiff
   version: "1.4.1"
-  python_min: '3.11'
 
 package:
   name: ${{ name|lower }}
@@ -43,7 +42,9 @@ requirements:
 
 tests:
   - python:
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
       imports:
         - bioio_ome_tiff
       pip_check: true
