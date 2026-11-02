@@ -2,8 +2,7 @@ schema_version: 1
 
 context:
   name: bioio-ome-tiff
-  version: 1.4.0
-  python_min: '3.11'
+  version: "1.4.1"
 
 package:
   name: ${{ name|lower }}
@@ -11,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/bioio_ome_tiff-${{ version }}.tar.gz
-  sha256: 0073ff612926ea17c72a32f378d62361e282dd7afbc561e8c0a53316fd8d2e29
+  sha256: c6f116b753b6d48c14652b063d204101826c99ce64ea60c62c60748756259d1d
 
 build:
   number: 0
@@ -31,7 +30,8 @@ requirements:
     - dask-core >=2021.4.1
     - fsspec >=2022.8.0
     - imagecodecs >=2020.5.30
-    - kerchunk
+    - kerchunk  # from tifffile - zarr
+    - lxml >=5.0  # from ome-types - lxml
     - numpy >=1.24
     - ome-types >=0.4.0
     - pydantic >=1.10.0
@@ -39,11 +39,13 @@ requirements:
     - tifffile >=2025.5.21
     - xarray >=0.16.1
     - xmlschema
-    - zarr >=3.1.3
+    - zarr >=3.1.3  # from tifffile - zarr
 
 tests:
   - python:
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
       imports:
         - bioio_ome_tiff
       pip_check: true
