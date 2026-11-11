@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: bioio-ome-tiff
-  version: "1.4.1"
+  version: "1.5.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/bioio_ome_tiff-${{ version }}.tar.gz
-  sha256: c6f116b753b6d48c14652b063d204101826c99ce64ea60c62c60748756259d1d
+  sha256: 069df6a936ab1508f4da621155d7b3fa1b3659f738ba3f955ac02806a5237471
 
 build:
   number: 0
